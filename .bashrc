@@ -142,6 +142,8 @@ PATH=$PATH:~/.local/bin
 #unset __conda_setup
 # <<< conda initialize <<<
 
+# For Ranger to quit to whatever directory we were in (effectively doing a cd)
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
 # add Go to $PATH
 export PATH=/usr/local/go/bin:$PATH
