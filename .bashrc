@@ -142,6 +142,14 @@ PATH=$PATH:~/.local/bin
 #unset __conda_setup
 # <<< conda initialize <<<
 
+# Add support for powerline (disabled for now, interferes with MRS container)
+# if [ -f $HOME/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh ]; then
+#     $HOME/.local/bin/powerline-daemon -q
+#     POWERLINE_BASH_CONTINUATION=1
+#     POWERLINE_BASH_SELECT=1
+#     source $HOME/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
+# fi
+
 # For Ranger to quit to whatever directory we were in (effectively doing a cd)
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
@@ -150,7 +158,9 @@ export PATH=/usr/local/go/bin:$PATH
 
 source /home/tianyilim/.config/broot/launcher/bash/br
 
+alias cdm='cd ~/mrs_summer_school/mrs_singularity' 
+
 # For MRS Summer School Singularity Container
 if [ -n "$SINGULARITY_NAME" ]; then
-  /home/tianyilim/mrs_summer_school/mrs_singularity/mount/singularity_bashrc.sh
+  source /home/tianyilim/mrs_summer_school/mrs_singularity/mount/singularity_bashrc.sh
 fi
