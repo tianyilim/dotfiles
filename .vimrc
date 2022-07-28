@@ -17,6 +17,13 @@ syntax on
 " Disable the default Vim startup message.
 set shortmess+=I
 
+" formatting rules for ROS
+set shiftwidth=2  " Two space indents
+set tabstop=2     " Tab key indents two spaces at a time
+set expandtab     " Use spaces when the <Tab> key is pressed
+set cindent       " Turn on automatic C-code indentation
+set smarttab
+
 " Show line numbers.
 set number
 
@@ -84,6 +91,22 @@ inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
+" Mappings for tmux-style pane splitting (but with <C-w> as leader)
+" This is how TY configures his splitting 
+nnoremap <C-w><bar> <C-w>v  
+nnoremap <C-w>- <C-w>s
+" Emulate the 'Z' zoom functionality of Tmux
+nnoremap <C-w>z <C-w>_
+" And capital Z to return to equalized splits
+nnoremap <C-w>Z <C-w>=
+
+" Mappings for Vim Tabs
+" Empty new window, with file explorer 
+nnoremap <C-w>c :tabnew<CR>:NERDTree<CR> 
+" Toggle between windows (use {i}gt to get to a specific one)
+nnoremap <C-w>L gT
+nnoremap <C-w>H gt
+
 " Mappings to move lines up and down ala VS Code
 " Press ALT + j/k to move a line up and down.
 " These two lines of code are needed to remap the ALT key (which somehow
@@ -105,6 +128,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'valloric/youcompleteme'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'wakatime/vim-wakatime'
+Plug 'taketwo/vim-ros'
 
 Plug 'ryanoasis/vim-devicons'	" Dev Icons should always be the last plugin loaded
 call plug#end()
