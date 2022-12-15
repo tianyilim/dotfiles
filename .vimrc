@@ -73,7 +73,7 @@ set mouse+=a
 " This sets the timeout length for ESC (for responsive exit from
 " INSERT->NORMAL mode)
 set timeoutlen=1000
-set ttimeoutlen=50
+set ttimeoutlen=25
 
 " Try to prevent bad habits like using the arrow keys for movement. This is
 " not the only possible bad habit. For example, holding down the h/j/k/l keys
@@ -129,9 +129,21 @@ Plug 'valloric/youcompleteme'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'wakatime/vim-wakatime'
 Plug 'taketwo/vim-ros'
+" These two plugins don't really work alongside YCM. Fix this later.
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 Plug 'ryanoasis/vim-devicons'	" Dev Icons should always be the last plugin loaded
 call plug#end()
+
+" " Trigger configuration. Do not use <tab> if you use YouCompleteMe.
+" " Now UltiSnips is bound to Shift+
+" let g:UltiSnipsExpandTrigger="<S-t>"
+" let g:UltiSnipsJumpForwardTrigger="<S-f>"
+" let g:UltiSnipsJumpBackwardTrigger="<S-b>"
+
+" YCM settings for documentation
+nmap <leader>D <plug>(YCMHover)
 
 " Settings necessary for vim-devicons
 set encoding=UTF-8
