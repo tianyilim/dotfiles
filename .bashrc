@@ -88,7 +88,7 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -129,17 +129,17 @@ PATH=$PATH:~/.local/bin
 ### Don't use conda anymore (might screw up ROS2) ###
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$('/home/tianyilim/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    eval "$__conda_setup"
-#else
-#    if [ -f "/home/tianyilim/miniconda3/etc/profile.d/conda.sh" ]; then
-#        . "/home/tianyilim/miniconda3/etc/profile.d/conda.sh"
-#    else
-#        export PATH="/home/tianyilim/miniconda3/bin:$PATH"
-#    fi
-#fi
-#unset __conda_setup
+__conda_setup="$('/home/tianyilim/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/tianyilim/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/tianyilim/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/tianyilim/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
 # <<< conda initialize <<<
 
 # Add support for powerline (disabled for now, interferes with MRS container)
@@ -164,3 +164,5 @@ alias cdm='cd ~/mrs_summer_school/mrs_singularity'
 if [ -n "$SINGULARITY_NAME" ]; then
   source /home/tianyilim/mrs_summer_school/mrs_singularity/mount/singularity_bashrc.sh
 fi
+
+alias euler="ssh -Y -i $HOME/.ssh/id_ed25519_euler tialim@euler.ethz.ch"
