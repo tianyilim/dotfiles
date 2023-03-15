@@ -11,6 +11,8 @@ Contains dotfiles (Configuration files) for:
 2. Make a backup of your personal config files
 3. Delete your personal config files
 4. Create a symlink from this repo to where the dotfile should be. 
+5. An easy way to change the Alacritty theme is with [`alacritty-themes`](https://www.funkyspacemonkey.com/how-to-easily-apply-and-change-alacritty-themes). Follow instructions to NPM install this package.
+
 
 For example:
 `ln -s <PATH_TO_REPO>/.bashrc ~/.bashrc`
