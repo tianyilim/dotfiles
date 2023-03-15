@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# If not running interactively, don't do anything
+
 case $- in
     *i*) ;;
       *) return;;
@@ -100,7 +100,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -116,39 +115,32 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# ros2 setup
-# source /opt/ros/galactic/setup.bash
-# source ~/ros2_galactic/install/local_setup.bash
-# source /usr/share/gazebo/setup.bash
-# export ROS_DOMAIN_ID=64
-# export LC_NUMERIC="en_US.UTF-8"
-
 # Ensure that Jupyter Notebook is found
 PATH=$PATH:~/.local/bin
 
-### Don't use conda anymore (might screw up ROS2) ###
+### Don't use conda anymore (might screw up ROS) ###
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/tianyilim/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/tianyilim/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/tianyilim/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/tianyilim/miniconda3/bin:$PATH"
-    fi
-fi
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/tianyilim/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/tianyilim/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/tianyilim/miniconda3/bin:$PATH"
+#     fi
+# fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# Add support for powerline (disabled for now, interferes with MRS container)
-# if [ -f $HOME/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh ]; then
-#     $HOME/.local/bin/powerline-daemon -q
-#     POWERLINE_BASH_CONTINUATION=1
-#     POWERLINE_BASH_SELECT=1
-#     source $HOME/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
-# fi
+# Add support for powerline
+if [ -f $HOME/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh ]; then
+    $HOME/.local/bin/powerline-daemon -q
+    POWERLINE_BASH_CONTINUATION=1
+    POWERLINE_BASH_SELECT=1
+    source $HOME/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
+fi
 
 # For Ranger to quit to whatever directory we were in (effectively doing a cd)
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
@@ -158,11 +150,33 @@ export PATH=/usr/local/go/bin:$PATH
 
 source /home/tianyilim/.config/broot/launcher/bash/br
 
-alias cdm='cd ~/mrs_summer_school/mrs_singularity' 
+# For Euler (ETH HPC cluster)
+# alias euler="ssh -Y -i $HOME/.ssh/id_ed25519_euler tialim@euler.ethz.ch"
 
-# For MRS Summer School Singularity Container
-if [ -n "$SINGULARITY_NAME" ]; then
-  source /home/tianyilim/mrs_summer_school/mrs_singularity/mount/singularity_bashrc.sh
-fi
+alias cdf1="cd ~/catkin_ws/src/race_stack/"
 
-alias euler="ssh -Y -i $HOME/.ssh/id_ed25519_euler tialim@euler.ethz.ch"
+# aliases for different ROS distros
+alias sros1="source /opt/ros/noetic/setup.bash"
+alias sros2="source /opt/ros/galactic/setup.bash"
+alias sf1="sros1; source ~/catkin_ws/devel/setup.bash"
+
+alias sshnuc1="ssh -XC race_crew@192.168.192.16"
+alias sshnuc2="ssh -XC race_crew@192.168.192.4"
+alias sshnuc3="ssh -XC race_crew@192.168.192.135"
+alias sshnuc4="ssh -XC race_crew@192.168.192.106"
+alias sshnuc5="ssh -XC race_crew@192.168.192.200"
+
+export ZEROTIER_IP="192.168.192.97"
+alias pit_rviz1='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC1 rviz'
+alias pit_rviz2='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC2 rviz'
+alias pit_rviz3='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC3 rviz'
+alias pit_rviz4='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC4 rviz'
+alias pit_rviz5='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC5 rviz'
+
+# Helpers for Pit Starter Source (if you just want to set the environment variables in your system)
+alias pit1='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC1'
+alias pit2='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC2'
+alias pit3='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC3'
+alias pit4='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC4'
+alias pit5='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC5'
+
