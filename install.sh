@@ -6,7 +6,7 @@
 set +e
 # I also use YCM so you will need this part.
 sudo apt install build-essential cmake vim-nox python3-dev
-sudo apt install mono-complete golang nodejs openjdk-17-jdk openjdk-17-jre npm
+sudo apt install mono-complete golang nodejs openjdk-17-jdk openjdk-17-jre npm # I don't think these are necessary...
 
 if [ -f ~/.vimrc ]; then
     echo "~/.vimrc moved to ~/.vimrc_cp."
@@ -36,5 +36,5 @@ if [ -f ~/.alacritty.yml ]; then
     echo "~/.alacritty.yml moved to ~/.alacritty.yml_cp."
     mv ~/.alacritty.yml ~/.alacritty.yml_cp
 fi
-ln -s $(pwd)/alacritty.yml ~/.alacritty.
+ln -s $(pwd)/alacritty.yml ~/.alacritty.yml
 
