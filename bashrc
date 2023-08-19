@@ -115,43 +115,26 @@ if ! shopt -oq posix; then
   fi
 fi
 
+##############################################################################################
+############################### Bash customization begins here ###############################
+##############################################################################################
+
 # Ensure that Jupyter Notebook is found
 PATH=$PATH:~/.local/bin
+# add Go to $PATH for Vim YouCompleteMe
+export PATH=/usr/local/go/bin:$PATH
 
-### Don't use conda anymore (might screw up ROS) ###
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/tianyilim/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/home/tianyilim/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/tianyilim/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/home/tianyilim/miniconda3/bin:$PATH"
-#     fi
-# fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# Add support for powerline
-if [ -f $HOME/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh ]; then
+# Find where powerline was installed and enable it
+powerline_location=$(pip show powerline-status | grep Location | awk '{print $2}')
+if [ -f $powerline_location/powerline/bindings/bash/powerline.sh ]; then
     $HOME/.local/bin/powerline-daemon -q
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
-    source $HOME/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
+    source $powerline_location/powerline/bindings/bash/powerline.sh
 fi
 
 # For Ranger to quit to whatever directory we were in (effectively doing a cd)
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-
-# add Go to $PATH
-export PATH=/usr/local/go/bin:$PATH
-
-source /home/tianyilim/.config/broot/launcher/bash/br
-
-# For Euler (ETH HPC cluster)
-# alias euler="ssh -Y -i $HOME/.ssh/id_ed25519_euler tialim@euler.ethz.ch"
 
 alias cdf1="cd ~/catkin_ws/src/race_stack/"
 

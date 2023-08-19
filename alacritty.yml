@@ -398,7 +398,6 @@ font:
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
 #working_directory: None
-
 # Offer IPC using `alacritty msg` (unix only)
 #ipc_socket: true
 #mouse:
@@ -830,30 +829,30 @@ key_bindings:
   # Highlight window damage information.
   #highlight_damage: false
 colors:
-  name: 3024 (light)
+  name: Atelierlakeside (dark)
   author: Chris Kempson
   primary:
-    background: "#f7f7f7"
-    foreground: "#4a4543"
+    background: "#161b1d"
+    foreground: "#7ea2b4"
   cursor:
-    text: "#f7f7f7"
-    cursor: "#4a4543"
+    text: "#161b1d"
+    cursor: "#7ea2b4"
   normal:
-    black: "#090300"
-    red: "#db2d20"
-    green: "#01a252"
-    yellow: "#fded02"
-    blue: "#01a0e4"
-    magenta: "#a16a94"
-    cyan: "#b5e4f4"
-    white: "#a5a2a2"
+    black: "#161b1d"
+    red: "#d22d72"
+    green: "#568c3b"
+    yellow: "#8a8a0f"
+    blue: "#257fad"
+    magenta: "#5d5db1"
+    cyan: "#2d8f6f"
+    white: "#7ea2b4"
   bright:
-    black: "#5c5855"
-    red: "#db2d20"
-    green: "#01a252"
-    yellow: "#fded02"
-    blue: "#01a0e4"
-    magenta: "#a16a94"
-    cyan: "#b5e4f4"
-    white: "#f7f7f7"
-theme: 3024.light
+    black: "#5a7b8c"
+    red: "#d22d72"
+    green: "#568c3b"
+    yellow: "#8a8a0f"
+    blue: "#257fad"
+    magenta: "#5d5db1"
+    cyan: "#2d8f6f"
+    white: "#ebf8ff"
+theme: Atelierlakeside.dark
