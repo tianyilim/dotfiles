@@ -7,12 +7,12 @@ Contains dotfiles (Configuration files) for:
 - `.vimrc`: Vim config files
 
 ## Usage:
+Run `bash install.sh`. Essentially, this does:
 1. Clone this repo
 2. Make a backup of your personal config files
 3. Delete your personal config files
 4. Create a symlink from this repo to where the dotfile should be. 
 5. An easy way to change the Alacritty theme is with [`alacritty-themes`](https://www.funkyspacemonkey.com/how-to-easily-apply-and-change-alacritty-themes). Follow instructions to NPM install this package.
-
 
 For example:
 `ln -s <PATH_TO_REPO>/.bashrc ~/.bashrc`
@@ -22,6 +22,4 @@ For example:
 - I installed the YouCompleteMe extension. Follow along their entire install process.
 
 ## TODO:
-- Add a shell script that auto-installs (or replaces) the files in the user's Home folder
-- Add a shell script that installs the relevant dependencies (like fonts)
 - Documentation of keybindings
