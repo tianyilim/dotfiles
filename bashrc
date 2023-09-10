@@ -2,7 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-
 case $- in
     *i*) ;;
       *) return;;
@@ -75,7 +74,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    #alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -86,11 +85,6 @@ fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -alhF'
-alias la='ls -A'
-alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -133,6 +127,16 @@ if [ -f $powerline_location/powerline/bindings/bash/powerline.sh ]; then
     source $powerline_location/powerline/bindings/bash/powerline.sh
 fi
 
+# Aliases for installed packages
+alias ls='exa'
+alias ll='exa -alhF'
+alias la='exa -A'
+alias tree='exa --tree'
+
+alias cat='batcat'
+
+alias grep='rg'
+
 # For Ranger to quit to whatever directory we were in (effectively doing a cd)
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 
@@ -140,7 +144,7 @@ alias cdf1="cd ~/catkin_ws/src/race_stack/"
 
 # aliases for different ROS distros
 alias sros1="source /opt/ros/noetic/setup.bash"
-alias sros2="source /opt/ros/galactic/setup.bash"
+alias sros2="source /opt/ros/humble/setup.bash"
 alias sf1="sros1; source ~/catkin_ws/devel/setup.bash"
 
 alias sshnuc1="ssh -XC race_crew@192.168.192.16"
@@ -150,16 +154,16 @@ alias sshnuc4="ssh -XC race_crew@192.168.192.106"
 alias sshnuc5="ssh -XC race_crew@192.168.192.200"
 
 export ZEROTIER_IP="192.168.192.97"
-alias pit_rviz1='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC1 rviz'
-alias pit_rviz2='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC2 rviz'
-alias pit_rviz3='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC3 rviz'
-alias pit_rviz4='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC4 rviz'
-alias pit_rviz5='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC5 rviz'
+# alias pit_rviz1='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC1 rviz'
+# alias pit_rviz2='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC2 rviz'
+# alias pit_rviz3='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC3 rviz'
+# alias pit_rviz4='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC4 rviz'
+# alias pit_rviz5='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC5 rviz'
 
 # Helpers for Pit Starter Source (if you just want to set the environment variables in your system)
-alias pit1='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC1'
-alias pit2='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC2'
-alias pit3='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC3'
-alias pit4='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC4'
-alias pit5='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC5'
+# alias pit1='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC1'
+# alias pit2='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC2'
+# alias pit3='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC3'
+# alias pit4='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC4'
+# alias pit5='source ~/catkin_ws/src/race_stack/f110_utils/scripts/pit_starter/pit_starter.sh "$ZEROTIER_IP" NUC5'
 

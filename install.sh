@@ -5,9 +5,10 @@ set +e
 cp RobotoMonoNerdFontMono-Regular.ttf ~/.local/share/fonts/
 
 # Install the packages that I usually use in a fresh Linux install
+# Be aware these are only tested on Ubuntu 22.04 
 sudo apt update
 sudo apt -y upgrade
-sudo apt install tmux ranger highlight xclip python3-pip
+sudo apt install tmux ranger highlight xclip python3-pip bat fzf exa ripgrep
 
 # I have configured my bashrc to alias Ranger to do something slightly different, so copy ranger configs now.
 ranger --copy-config=all
