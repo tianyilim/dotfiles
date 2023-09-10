@@ -78,9 +78,9 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+    # alias grep='grep --color=auto'
+    # alias fgrep='fgrep --color=auto'
+    # alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
@@ -133,9 +133,9 @@ alias ll='exa -alhF'
 alias la='exa -A'
 alias tree='exa --tree'
 
-alias cat='batcat'
+alias cat='batcat' # better version of cat
 
-alias grep='rg'
+alias grep='rg -p' # pretty-version of ripgrep
 
 # For Ranger to quit to whatever directory we were in (effectively doing a cd)
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
